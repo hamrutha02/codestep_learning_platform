@@ -3,66 +3,1111 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Java - CodeStep</title>
-
-    <meta name="description"
-          content="Learn Java programming step by step with CodeStep lessons, examples, outputs, and quizzes.">
+    <title>Learn Java - CodeStep</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .topic {
+            display: none;
+        }
+
+        .topic:target {
+            display: block;
+        }
+
+        .learning-page:has(.topic:target)
+        .topic:first-of-type {
+            display: none;
+        }
+
+        .learning-page:not(:has(.topic:target))
+        .topic:first-of-type {
+            display: block;
+        }
+
+        .output-details {
+            margin: 12px 0;
+        }
+
+        .output-details summary {
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 8px;
+            background: #5b4bdb;
+            color: white;
+            font-weight: 600;
+        }
+
+        .output-details pre {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        /* QUIZ */
+
+        .quiz-question {
+            margin: 14px 0;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .quiz-question input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .quiz-question label {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 45px;
+            margin: 8px 0;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            background: white;
+            text-align: left;
+        }
+
+        .quiz-question label:hover {
+            background: #f2f0ff;
+            border-color: #5b4bdb;
+        }
+
+        .quiz-question .answer {
+            display: none;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        /* CORRECT ANSWER */
+
+        .quiz-question input.correct-option:checked + label {
+            background: #e8f7e8;
+            border-color: green;
+            color: green;
+        }
+
+        .quiz-question input.correct-option:checked + label + .answer {
+            display: block;
+            color: green;
+        }
+
+        /* WRONG ANSWER */
+
+        .quiz-question input.wrong-option:checked + label {
+            background: #fff0f0;
+            border-color: red;
+            color: red;
+        }
+
+        .quiz-question input.wrong-option:checked + label + .answer {
+            display: block;
+            color: red;
+        }
+
+        /* KEYBOARD ACCESS */
+
+        .quiz-question input[type="radio"]:focus-visible + label {
+            outline: 2px solid #5b4bdb;
+        }
+
+    </style>
+
 </head>
 
-<body data-language="java">
+<body>
 
-    <!-- Navbar -->
-    <header class="navbar">
+<header class="header">
 
-        <div class="logo">
-            <a href="index.html">CodeStep</a>
-        </div>
+    <div class="logo">CodeStep</div>
 
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#languages">Languages</a>
-            <a href="index.html#about">About</a>
-        </nav>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="python.html">Python</a>
+        <a href="c.html">C</a>
+        <a href="cpp.html">C++</a>
+        <a href="java.html">Java</a>
+    </nav>
 
-    </header>
+</header>
 
+<div class="learning-page">
 
-    <!-- Learning Container -->
-    <div class="learning-container">
+    <aside class="sidebar">
 
+        <h3>Java Topics</h3>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
+        <a href="#intro">Introduction</a>
+        <a href="#variables">Variables</a>
+        <a href="#datatypes">Data Types</a>
+        <a href="#conditions">Conditional Statements</a>
+        <a href="#loops">Loops</a>
+        <a href="#classes">Classes and Objects</a>
 
-            <h3>Java Learning</h3>
+    </aside>
 
-            <div id="topicList" class="topic-list">
-                <!-- Topic buttons created using JavaScript -->
+    <main class="content">
+
+        <!-- TOPIC 1: INTRODUCTION -->
+
+        <section class="topic" id="intro">
+
+            <h1>Introduction to Java</h1>
+
+            <p>
+                Java is a programming language used to
+                develop applications, websites, and software.
+                Java supports object-oriented programming.
+                A Java program starts execution from
+                the main() method.
+                The System.out.println() statement
+                displays output on the screen.
+            </p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+
+            <p>
+                In Master, characters follow instructions
+                to complete their tasks.
+                Similarly, a Java program follows
+                instructions written by the programmer.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>class Main {
+    public static void main(String[] args) {
+        // statements
+    }
+}</code></pre>
+
+            <h3>Example Code</h3>
+
+            <pre><code>class Main {
+    public static void main(String[] args) {
+
+        System.out.println("Hello, CodeStep!");
+
+    }
+}</code></pre>
+
+            <details class="output-details">
+
+                <summary>▶ Show Output</summary>
+
+                <pre><code>Hello, CodeStep!</code></pre>
+
+            </details>
+
+            <h3>Explanation</h3>
+
+            <p>
+                class defines a class.
+                Main is the class name.
+                main() is the starting point.
+                System.out.println() displays output.
+            </p>
+
+            <h3>Quiz 1</h3>
+
+            <div class="quiz-question">
+
+                <p>Which statement displays output in Java?</p>
+
+                <input type="radio" id="java-q1-a" name="java-q1"
+                    class="correct-option">
+
+                <label for="java-q1-a">
+                    System.out.println()
+                </label>
+
+                <p class="answer">
+                    Correct! System.out.println() displays output on the screen.
+                </p>
+
+                <input type="radio" id="java-q1-b" name="java-q1"
+                    class="wrong-option">
+
+                <label for="java-q1-b">
+                    input()
+                </label>
+
+                <p class="answer">
+                    Wrong! input() is not the Java statement used to display output.
+                </p>
+
             </div>
 
-        </aside>
+            <h3>Quiz 2</h3>
+
+            <div class="quiz-question">
+
+                <p>Which method starts a Java program?</p>
+
+                <input type="radio" id="java-q2-a" name="java-q2"
+                    class="correct-option">
+
+                <label for="java-q2-a">
+                    main()
+                </label>
+
+                <p class="answer">
+                    Correct! The main() method is the starting point of a Java program.
+                </p>
+
+                <input type="radio" id="java-q2-b" name="java-q2"
+                    class="wrong-option">
+
+                <label for="java-q2-b">
+                    print()
+                </label>
+
+                <p class="answer">
+                    Wrong! print() is not the main method that starts a Java program.
+                </p>
+
+            </div>
+
+            <h3>Quiz 3</h3>
+
+            <div class="quiz-question">
+
+                <p>Java is which type of language?</p>
+
+                <input type="radio" id="java-q3-a" name="java-q3"
+                    class="correct-option">
+
+                <label for="java-q3-a">
+                    Object-oriented
+                </label>
+
+                <p class="answer">
+                    Correct! Java supports object-oriented programming.
+                </p>
+
+                <input type="radio" id="java-q3-b" name="java-q3"
+                    class="wrong-option">
+
+                <label for="java-q3-b">
+                    Only a markup language
+                </label>
+
+                <p class="answer">
+                    Wrong! Java is a programming language, not a markup language.
+                </p>
+
+            </div>
+
+        </section>
 
 
-        <!-- Lesson Content -->
-        <main id="lessonContent" class="lesson-content">
+        <!-- TOPIC 2: VARIABLES -->
 
-            <!-- Lesson content created using JavaScript -->
+        <section class="topic" id="variables">
 
-        </main>
+            <h1>Variables</h1>
+
+            <p>
+                A variable is a named memory location
+                used to store a value.
+                Variables help store information
+                such as marks, age, and names.
+                The value stored in a variable
+                can be used in a program.
+            </p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+
+            <p>
+                In Sarkar, votes are counted and stored.
+                Similarly, Java variables store values
+                that can be used in calculations.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>dataType variableName = value;</code></pre>
+
+            <h3>Example Code</h3>
+
+            <pre><code>class Main {
+    public static void main(String[] args) {
+
+        int marks = 95;
+
+        System.out.println("Marks = " + marks);
+
+    }
+}</code></pre>
+
+            <details class="output-details">
+
+                <summary>▶ Show Output</summary>
+
+                <pre><code>Marks = 95</code></pre>
+
+            </details>
+
+            <h3>Explanation</h3>
+
+            <p>
+                int is the data type.
+                marks is the variable name.
+                95 is the stored value.
+                The + operator joins the text
+                and the variable value.
+            </p>
+
+            <h3>Quiz 1</h3>
+
+            <div class="quiz-question">
+
+                <p>What does a variable store?</p>
+
+                <input type="radio" id="java-q4-a" name="java-q4"
+                    class="correct-option">
+
+                <label for="java-q4-a">
+                    A value
+                </label>
+
+                <p class="answer">
+                    Correct! A variable stores a value in memory.
+                </p>
+
+                <input type="radio" id="java-q4-b" name="java-q4"
+                    class="wrong-option">
+
+                <label for="java-q4-b">
+                    Only a class
+                </label>
+
+                <p class="answer">
+                    Wrong! A variable stores data, not only a class.
+                </p>
+
+            </div>
+
+            <h3>Quiz 2</h3>
+
+            <div class="quiz-question">
+
+                <p>Which type stores whole numbers?</p>
+
+                <input type="radio" id="java-q5-a" name="java-q5"
+                    class="correct-option">
+
+                <label for="java-q5-a">
+                    int
+                </label>
+
+                <p class="answer">
+                    Correct! int stores whole numbers such as 10 and 25.
+                </p>
+
+                <input type="radio" id="java-q5-b" name="java-q5"
+                    class="wrong-option">
+
+                <label for="java-q5-b">
+                    char
+                </label>
+
+                <p class="answer">
+                    Wrong! char stores a single character.
+                </p>
+
+            </div>
+
+            <h3>Quiz 3</h3>
+
+            <div class="quiz-question">
+
+                <p>Choose a valid variable declaration.</p>
+
+                <input type="radio" id="java-q6-a" name="java-q6"
+                    class="correct-option">
+
+                <label for="java-q6-a">
+                    int age = 18;
+                </label>
+
+                <p class="answer">
+                    Correct! This declaration uses a data type, variable name, and value.
+                </p>
+
+                <input type="radio" id="java-q6-b" name="java-q6"
+                    class="wrong-option">
+
+                <label for="java-q6-b">
+                    age int;
+                </label>
+
+                <p class="answer">
+                    Wrong! The data type must come before the variable name.
+                </p>
+
+            </div>
+
+        </section>
 
 
-    </div>
+        <!-- TOPIC 3: DATA TYPES -->
+
+        <section class="topic" id="datatypes">
+
+            <h1>Data Types</h1>
+
+            <p>
+                Data types specify the type of value
+                stored in a variable.
+                int stores whole numbers.
+                double stores decimal numbers.
+                char stores a single character.
+                String stores text.
+            </p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+
+            <p>
+                In Bigil, players have different roles.
+                Similarly, Java data types have different
+                purposes based on the values stored.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>int count;
+double price;
+char grade;
+String name;</code></pre>
+
+            <h3>Example Code</h3>
+
+            <pre><code>class Main {
+    public static void main(String[] args) {
+
+        int count = 3;
+        double price = 12.5;
+        char grade = 'A';
+        String name = "Vijay";
+
+        System.out.println(count);
+        System.out.println(price);
+        System.out.println(grade);
+        System.out.println(name);
+
+    }
+}</code></pre>
+
+            <details class="output-details">
+
+                <summary>▶ Show Output</summary>
+
+                <pre><code>3
+12.5
+A
+Vijay</code></pre>
+
+            </details>
+
+            <h3>Explanation</h3>
+
+            <p>
+                int stores whole numbers.
+                double stores decimal numbers.
+                char stores one character.
+                String stores text.
+                println() displays each value
+                on a separate line.
+            </p>
+
+            <h3>Quiz 1</h3>
+
+            <div class="quiz-question">
+
+                <p>Which data type stores a character?</p>
+
+                <input type="radio" id="java-q7-a" name="java-q7"
+                    class="correct-option">
+
+                <label for="java-q7-a">
+                    char
+                </label>
+
+                <p class="answer">
+                    Correct! char stores a single character.
+                </p>
+
+                <input type="radio" id="java-q7-b" name="java-q7"
+                    class="wrong-option">
+
+                <label for="java-q7-b">
+                    double
+                </label>
+
+                <p class="answer">
+                    Wrong! double stores decimal numbers.
+                </p>
+
+            </div>
+
+            <h3>Quiz 2</h3>
+
+            <div class="quiz-question">
+
+                <p>Which type stores text?</p>
+
+                <input type="radio" id="java-q8-a" name="java-q8"
+                    class="correct-option">
+
+                <label for="java-q8-a">
+                    String
+                </label>
+
+                <p class="answer">
+                    Correct! String stores text such as names and sentences.
+                </p>
+
+                <input type="radio" id="java-q8-b" name="java-q8"
+                    class="wrong-option">
+
+                <label for="java-q8-b">
+                    int
+                </label>
+
+                <p class="answer">
+                    Wrong! int stores whole numbers.
+                </p>
+
+            </div>
+
+            <h3>Quiz 3</h3>
+
+            <div class="quiz-question">
+
+                <p>Which type stores decimal values?</p>
+
+                <input type="radio" id="java-q9-a" name="java-q9"
+                    class="correct-option">
+
+                <label for="java-q9-a">
+                    double
+                </label>
+
+                <p class="answer">
+                    Correct! double stores decimal numbers such as 12.5.
+                </p>
+
+                <input type="radio" id="java-q9-b" name="java-q9"
+                    class="wrong-option">
+
+                <label for="java-q9-b">
+                    char
+                </label>
+
+                <p class="answer">
+                    Wrong! char stores a single character.
+                </p>
+
+            </div>
+
+        </section>
 
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+        <!-- TOPIC 4: CONDITIONAL STATEMENTS -->
+
+        <section class="topic" id="conditions">
+
+            <h1>Conditional Statements</h1>
+
+            <p>
+                Conditional statements help a program
+                make decisions.
+                The if statement checks a condition.
+                If the condition is true,
+                the if block executes.
+                Otherwise, the else block executes.
+            </p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+
+            <p>
+                In Theri, decisions depend on situations.
+                Similarly, if-else statements choose
+                which block of code should execute.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if (condition) {
+    // true block
+} else {
+    // false block
+}</code></pre>
+
+            <h3>Example Code</h3>
+
+            <pre><code>class Main {
+    public static void main(String[] args) {
+
+        int mark = 75;
+
+        if (mark >= 50) {
+
+            System.out.println("Pass");
+
+        } else {
+
+            System.out.println("Fail");
+
+        }
+
+    }
+}</code></pre>
+
+            <details class="output-details">
+
+                <summary>▶ Show Output</summary>
+
+                <pre><code>Pass</code></pre>
+
+            </details>
+
+            <h3>Explanation</h3>
+
+            <p>
+                mark is 75.
+                The condition mark >= 50 is true.
+                Therefore, the program displays Pass.
+                If the condition is false,
+                the else block displays Fail.
+            </p>
+
+            <h3>Quiz 1</h3>
+
+            <div class="quiz-question">
+
+                <p>Which keyword checks a condition?</p>
+
+                <input type="radio" id="java-q10-a" name="java-q10"
+                    class="correct-option">
+
+                <label for="java-q10-a">
+                    if
+                </label>
+
+                <p class="answer">
+                    Correct! if checks whether a condition is true.
+                </p>
+
+                <input type="radio" id="java-q10-b" name="java-q10"
+                    class="wrong-option">
+
+                <label for="java-q10-b">
+                    println
+                </label>
+
+                <p class="answer">
+                    Wrong! println() displays output.
+                </p>
+
+            </div>
+
+            <h3>Quiz 2</h3>
+
+            <div class="quiz-question">
+
+                <p>When does else execute?</p>
+
+                <input type="radio" id="java-q11-a" name="java-q11"
+                    class="correct-option">
+
+                <label for="java-q11-a">
+                    When if is false
+                </label>
+
+                <p class="answer">
+                    Correct! else executes when the if condition is false.
+                </p>
+
+                <input type="radio" id="java-q11-b" name="java-q11"
+                    class="wrong-option">
+
+                <label for="java-q11-b">
+                    When if is true
+                </label>
+
+                <p class="answer">
+                    Wrong! When if is true, its if block executes.
+                </p>
+
+            </div>
+
+            <h3>Quiz 3</h3>
+
+            <div class="quiz-question">
+
+                <p>What is the output when mark = 75?</p>
+
+                <input type="radio" id="java-q12-a" name="java-q12"
+                    class="correct-option">
+
+                <label for="java-q12-a">
+                    Pass
+                </label>
+
+                <p class="answer">
+                    Correct! 75 >= 50 is true, so Pass is displayed.
+                </p>
+
+                <input type="radio" id="java-q12-b" name="java-q12"
+                    class="wrong-option">
+
+                <label for="java-q12-b">
+                    Fail
+                </label>
+
+                <p class="answer">
+                    Wrong! The mark is greater than or equal to 50, so the condition is true.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 5: LOOPS -->
+
+        <section class="topic" id="loops">
+
+            <h1>Loops</h1>
+
+            <p>
+                Loops repeat a block of code.
+                The for loop is useful when we know
+                how many times a task should repeat.
+                A loop contains initialization,
+                condition, and update.
+            </p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+
+            <p>
+                In Leo, repeated practice helps
+                a team improve.
+                Similarly, loops repeat instructions
+                until the condition becomes false.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>for (initialization; condition; update) {
+    // statements
+}</code></pre>
+
+            <h3>Example Code</h3>
+
+            <pre><code>class Main {
+    public static void main(String[] args) {
+
+        for (int i = 1; i <= 3; i++) {
+
+            System.out.print(i + " ");
+
+        }
+
+    }
+}</code></pre>
+  <details class="output-details">
+
+                <summary>▶ Show Output</summary>
+
+                <pre><code>1 2 3</code></pre>
+
+            </details>
+
+            <h3>Explanation</h3>
+
+            <p>
+                The loop starts with i = 1.
+                It runs while i <= 3.
+                i++ increases the value by one.
+                The output is 1 2 3.
+            </p>
+
+            <h3>Quiz 1</h3>
+
+            <div class="quiz-question">
+
+                <p>What does a loop do?</p>
+
+                <input type="radio" id="java-q13-a" name="java-q13"
+                    class="correct-option">
+
+                <label for="java-q13-a">
+                    Repeats code
+                </label>
+
+                <p class="answer">
+                    Correct! A loop repeats a block of code.
+                </p>
+
+                <input type="radio" id="java-q13-b" name="java-q13"
+                    class="wrong-option">
+
+                <label for="java-q13-b">
+                    Deletes code
+                </label>
+
+                <p class="answer">
+                    Wrong! A loop repeats code; it does not delete it.
+                </p>
+
+            </div>
+
+            <h3>Quiz 2</h3>
+
+            <div class="quiz-question">
+
+                <p>Which part checks whether to continue?</p>
+
+                <input type="radio" id="java-q14-a" name="java-q14"
+                    class="correct-option">
+
+                <label for="java-q14-a">
+                    Condition
+                </label>
+
+                <p class="answer">
+                    Correct! The condition determines whether the loop continues.
+                </p>
+
+                <input type="radio" id="java-q14-b" name="java-q14"
+                    class="wrong-option">
+<label for="java-q14-b">
+                    Update
+                </label>
+
+                <p class="answer">
+                    Wrong! The update changes the loop variable.
+                </p>
+
+            </div>
+
+            <h3>Quiz 3</h3>
+
+            <div class="quiz-question">
+
+                <p>How many times does the loop run from 1 to 3?</p>
+
+                <input type="radio" id="java-q15-a" name="java-q15"
+                    class="correct-option">
+
+                <label for="java-q15-a">
+                    3 times
+                </label>
+
+                <p class="answer">
+                    Correct! The values are 1, 2, and 3, so it runs three times.
+                </p>
+
+                <input type="radio" id="java-q15-b" name="java-q15"
+                    class="wrong-option">
+
+                <label for="java-q15-b">
+                    1 time
+                </label>
+
+                <p class="answer">
+                    Wrong! The loop executes for all three values: 1, 2, and 3.
+                </p>
+
+            </div>
+
+        </section>
+        <!-- TOPIC 6: CLASSES AND OBJECTS -->
+
+        <section class="topic" id="classes">
+
+            <h1>Classes and Objects</h1>
+
+            <p>
+                Java supports object-oriented programming.
+                A class is a blueprint used to create objects.
+                A class can contain variables and methods.
+                An object is an instance of a class.
+                Classes help organize related information
+                and behavior together.
+            </p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+
+            <p>
+                In Bigil, each player has information
+                and responsibilities.
+                Similarly, a class groups related
+                data and methods together.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>class ClassName {
+// variables
+
+    // methods
+
+}</code></pre>
+
+            <h3>Example Code</h3>
+
+            <pre><code>class Student {
+
+    String name;
+
+    void display() {
+
+        System.out.println(name);
+
+    }
+
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        s.name = "Vijay";
+
+        s.display();
+
+    }
+
+}</code></pre>
+
+            <details class="output-details">
+<summary>▶ Show Output</summary>
+
+                <pre><code>Vijay</code></pre>
+
+            </details>
+
+            <h3>Explanation</h3>
+
+            <p>
+                Student is the class name.
+                name is a variable inside the class.
+                display() is a method.
+                s is an object of Student.
+                The object calls display()
+                to print the student's name.
+            </p>
+
+            <h3>Quiz 1</h3>
+
+            <div class="quiz-question">
+
+                <p>What is a class?</p>
+
+                <input type="radio" id="java-q16-a" name="java-q16"
+                    class="correct-option">
+
+                <label for="java-q16-a">
+                    A blueprint
+                </label>
+
+                <p class="answer">
+                    Correct! A class is a blueprint used to create objects.
+                </p>
+  <input type="radio" id="java-q16-b" name="java-q16"
+                    class="wrong-option">
+
+                <label for="java-q16-b">
+                    A loop
+                </label>
+
+                <p class="answer">
+                    Wrong! A loop repeats code. A class defines data and methods.
+                </p>
+
+            </div>
+
+            <h3>Quiz 2</h3>
+
+            <div class="quiz-question">
+
+                <p>What is an object?</p>
+
+                <input type="radio" id="java-q17-a" name="java-q17"
+                    class="correct-option">
+
+                <label for="java-q17-a">
+                    Instance of a class
+                </label>
+<p class="answer">
+                    Correct! An object is an instance created from a class.
+                </p>
+
+                <input type="radio" id="java-q17-b" name="java-q17"
+                    class="wrong-option">
+
+                <label for="java-q17-b">
+                    A loop
+                </label>
+
+                <p class="answer">
+                    Wrong! A loop repeats code. An object is created from a class.
+                </p>
+
+            </div>
+
+            <h3>Quiz 3</h3>
+
+            <div class="quiz-question">
+
+                <p>Which keyword creates a class?</p>
+
+                <input type="radio" id="java-q18-a" name="java-q18"
+                    class="correct-option">
+
+                <label for="java-q18-a">
+                    class
+                </label>
+
+                <p class="answer">
+Correct! The class keyword defines a class in Java.
+                </p>
+
+                <input type="radio" id="java-q18-b" name="java-q18"
+                    class="wrong-option">
+
+                <label for="java-q18-b">
+                    object
+                </label>
+
+                <p class="answer">
+                    Wrong! object is not the keyword used to define a class.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
 
 </body>
-
 </html>

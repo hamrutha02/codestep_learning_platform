@@ -1,68 +1,732 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python - CodeStep</title>
-
-    <meta name="description"
-          content="Learn Python programming step by step with CodeStep lessons, examples, outputs, and quizzes.">
-
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .topic { display: none; }
+        .topic:target { display: block; }
+
+        body:has(.topic:target) #introduction {
+            display: none;
+        }
+
+        body:not(:has(.topic:target)) #introduction {
+            display: block;
+        }
+
+        .output-details {
+            margin: 15px 0;
+            padding: 12px;
+            background: #f0f0f8;
+            border-radius: 8px;
+        }
+
+        .output-details summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #5b4bdb;
+        }
+
+        .output-details pre {
+            margin-top: 12px;
+            padding: 12px;
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
+
+        .quiz-question {
+            padding: 15px;
+            margin: 15px 0;
+            background: #f7f8fc;
+            border-radius: 10px;
+        }
+
+        /* Hide radio buttons but keep them selectable through labels */
+        .quiz-question input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        /* Quiz options */
+        .quiz-question label {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            text-align: left;
+        }
+
+        .quiz-question label:hover {
+            background: #eeeaff;
+        }
+
+        /* Feedback hidden until an option is selected */
+        .quiz-question .answer {
+            display: none;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Correct feedback */
+        .quiz-question input.correct-option:checked + label {
+            background: #e8f7e8;
+            border-color: green;
+        }
+
+        .quiz-question input.correct-option:checked + label + .answer.correct {
+            display: block;
+            color: green;
+        }
+
+        /* Wrong feedback */
+        .quiz-question input.wrong-option:checked + label {
+            background: #fff0f0;
+            border-color: red;
+        }
+
+        .quiz-question input.wrong-option:checked + label + .answer.wrong {
+            display: block;
+            color: red;
+        }
+
+        .syntax-box {
+            padding: 12px;
+            background: #222;
+            color: white;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 
-<body data-language="python">
+<body>
 
-    <!-- Navbar -->
-    <header class="navbar">
+<header class="header">
+    <h2 class="logo">
+        <a href="index.html">CodeStep</a>
+    </h2>
 
-        <div class="logo">
-            <a href="index.html">CodeStep</a>
-        </div>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="python.html">Python</a>
+        <a href="c.html">C</a>
+        <a href="cpp.html">C++</a>
+        <a href="java.html">Java</a>
+    </nav>
+</header>
 
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#languages">Languages</a>
-            <a href="index.html#about">About</a>
-        </nav>
+<div class="learning-page">
 
-    </header>
+    <aside class="sidebar">
+        <h3>Python Topics</h3>
 
+        <a href="#introduction">Introduction</a>
+        <a href="#variables">Variables</a>
+        <a href="#datatypes">Data Types</a>
+        <a href="#conditions">Conditional Statements</a>
+        <a href="#loops">Loops</a>
+        <a href="#functions">Functions</a>
+    </aside>
 
-    <!-- Learning Container -->
-    <div class="learning-container">
+    <main class="content">
 
+        <!-- INTRODUCTION -->
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
+        <section class="topic" id="introduction">
 
-            <h3>Python Learning</h3>
+            <h1>Introduction to Python</h1>
 
-            <div id="topicList" class="topic-list">
-                <!-- Topic buttons created using JavaScript -->
+            <p>
+                Python is a simple and beginner-friendly programming language.
+                It is used to create websites, applications, automation,
+                artificial intelligence and data analysis programs.
+                Python code is easy to understand because it uses simple
+                English-like words and does not require many symbols.
+            </p>
+
+            <h3>🎬 Movie Example - Master</h3>
+
+            <p>
+                In Master, the main character uses planning and logical
+                thinking to solve problems. Similarly, Python allows us
+                to write instructions step by step to solve problems.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre class="syntax-box">print("Hello World")</pre>
+
+            <h3>Example Code</h3>
+
+            <pre class="syntax-box">print("Welcome to CodeStep")
+print("Learn Python")
+print("Start coding")</pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre>Welcome to CodeStep
+Learn Python
+Start coding</pre>
+            </details>
+
+            <h3>Code Explanation</h3>
+
+            <p>
+                <b>print()</b> is used to display information on the screen.
+                Text must be written inside quotation marks.
+                Each print statement displays its output on a new line.
+            </p>
+
+            <h3>Quiz</h3>
+
+            <div class="quiz-question">
+                <p>1. What is Python?</p>
+
+                <input type="radio" name="python-q1" id="python-q1-a" class="wrong-option">
+                <label for="python-q1-a">A. Database</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q1" id="python-q1-b" class="correct-option">
+                <label for="python-q1-b">B. Programming language</label>
+                <p class="answer correct">Correct!</p>
+
             </div>
 
-        </aside>
+            <div class="quiz-question">
+                <p>2. Which function displays output?</p>
 
+                <input type="radio" name="python-q2" id="python-q2-a" class="correct-option">
+                <label for="python-q2-a">A. print()</label>
+                <p class="answer correct">Correct!</p>
 
-        <!-- Lesson Content -->
-        <main id="lessonContent" class="lesson-content">
+                <input type="radio" name="python-q2" id="python-q2-b" class="wrong-option">
+                <label for="python-q2-b">B. input()</label>
+                <p class="answer wrong">Wrong!</p>
 
-            <!-- Lesson content created using JavaScript -->
+                
+            </div>
 
-        </main>
+            <div class="quiz-question">
+                <p>3. Which is correct Python syntax?</p>
 
+                <input type="radio" name="python-q3" id="python-q3-a" class="wrong-option">
+                <label for="python-q3-a">A. display("Hi")</label>
+                <p class="answer wrong">Wrong!</p>
 
-    </div>
+                <input type="radio" name="python-q3" id="python-q3-b" class="correct-option">
+                <label for="python-q3-b">B. print("Hi")</label>
+                <p class="answer correct">Correct!</p>
 
+               
+            </div>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+        </section>
+
+        <!-- VARIABLES -->
+
+        <section class="topic" id="variables">
+
+            <h1>Python Variables</h1>
+
+            <p>
+                A variable is a name used to store information in a program.
+                We can store numbers, names and other values inside
+                variables. The value can be used later in the program.
+                Python automatically identifies the type of value stored.
+            </p>
+
+            <h3>🎬 Movie Example - Beast</h3>
+
+            <p>
+                In Beast, the main character is identified by his name.
+                Similarly, a variable stores information using a name.
+                For example, a variable called hero can store a character name.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre class="syntax-box">variable_name = value</pre>
+
+            <h3>Example Code</h3>
+
+            <pre class="syntax-box">name = "Vijay"
+age = 30
+
+print(name)
+print(age)</pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre>Vijay
+30</pre>
+            </details>
+
+            <h3>Code Explanation</h3>
+
+            <p>
+                <b>name</b> stores the text Vijay.
+                <b>age</b> stores the number 30.
+                The equal symbol assigns a value to a variable.
+                print() displays the stored values.
+            </p>
+
+            <h3>Quiz</h3>
+
+            <div class="quiz-question">
+                <p>1. What is a variable?</p>
+
+                <input type="radio" name="python-q4" id="python-q4-a" class="correct-option">
+                <label for="python-q4-a">A. A name that stores a value</label>
+                <p class="answer correct">Correct!</p>
+
+                <input type="radio" name="python-q4" id="python-q4-b" class="wrong-option">
+                <label for="python-q4-b">B. A movie</label>
+                <p class="answer wrong">Wrong!</p>
+
+                
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Which symbol assigns a value?</p>
+
+                <input type="radio" name="python-q5" id="python-q5-a" class="wrong-option">
+                <label for="python-q5-a">A. ==</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q5" id="python-q5-b" class="correct-option">
+                <label for="python-q5-b">B. =</label>
+                <p class="answer correct">Correct!</p>
+
+                
+            </div>
+
+            <div class="quiz-question">
+                <p>3. What is the value of x?</p>
+                <pre>x = 10</pre>
+
+                <input type="radio" name="python-q6" id="python-q6-a" class="wrong-option">
+                <label for="python-q6-a">A. 5</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q6" id="python-q6-b" class="correct-option">
+                <label for="python-q6-b">B. 10</label>
+                <p class="answer correct">Correct!</p>
+
+               
+            </div>
+
+        </section>
+
+        <!-- DATA TYPES -->
+
+        <section class="topic" id="datatypes">
+
+            <h1>Python Data Types</h1>
+
+            <p>
+                Data types describe what kind of information a variable
+                contains. Python has different data types for numbers,
+                text and collections. Choosing the correct data type
+                helps us store and work with information properly.
+            </p>
+
+            <h3>🎬 Movie Example - Leo</h3>
+
+            <p>
+                In Leo, different objects and details have different
+                meanings. Similarly, Python uses different data types
+                to represent numbers, text and true-or-false values.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre class="syntax-box">age = 20
+name = "Vijay"
+price = 99.5
+is_student = True</pre>
+
+            <h3>Example Code</h3>
+
+            <pre class="syntax-box">name = "Vijay"
+age = 30
+height = 5.9
+is_actor = True
+
+print(type(name))
+print(type(age))
+print(type(height))
+print(type(is_actor))</pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre>&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'bool'&gt;</pre>
+            </details>
+
+            <h3>Code Explanation</h3>
+
+            <p>
+                <b>str</b> stores text.
+                <b>int</b> stores whole numbers.
+                <b>float</b> stores decimal numbers.
+                <b>bool</b> stores True or False.
+                type() identifies the data type.
+            </p>
+
+            <h3>Quiz</h3>
+
+            <div class="quiz-question">
+                <p>1. Which data type stores text?</p>
+
+                <input type="radio" name="python-q7" id="python-q7-a" class="correct-option">
+                <label for="python-q7-a">A. str</label>
+                <p class="answer correct">Correct!</p>
+
+                <input type="radio" name="python-q7" id="python-q7-b" class="wrong-option">
+                <label for="python-q7-b">B. int</label>
+                <p class="answer wrong">Wrong!</p>
+
+                
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Which data type stores decimal numbers?</p>
+
+                <input type="radio" name="python-q8" id="python-q8-a" class="wrong-option">
+                <label for="python-q8-a">A. bool</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q8" id="python-q8-b" class="correct-option">
+                <label for="python-q8-b">B. float</label>
+                <p class="answer correct">Correct!</p>
+
+               
+            </div>
+
+            <div class="quiz-question">
+                <p>3. What is the data type of 10?</p>
+
+                <input type="radio" name="python-q9" id="python-q9-a" class="wrong-option">
+                <label for="python-q9-a">A. str</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q9" id="python-q9-b" class="correct-option">
+                <label for="python-q9-b">B. int</label>
+                <p class="answer correct">Correct!</p>
+
+            </div>
+
+        </section>
+
+        <!-- CONDITIONAL STATEMENTS -->
+
+        <section class="topic" id="conditions">
+
+            <h1>Conditional Statements</h1>
+
+            <p>
+                Conditional statements help a program make decisions.
+                The program checks whether a condition is true or false.
+                If the condition is true, one block of code executes.
+                Otherwise, another block can execute.
+                Python uses if, elif and else for decision-making.
+            </p>
+
+            <h3>🎬 Movie Example - Theri</h3>
+
+            <p>
+                In Theri, the character makes different decisions
+                depending on the situation. Similarly, an if statement
+                allows a program to choose what to do based on a condition.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre class="syntax-box">if condition:
+    statement
+else:
+    statement</pre>
+
+            <h3>Example Code</h3>
+
+            <pre class="syntax-box">mark = 75
+
+if mark >= 50:
+    print("Pass")
+else:
+    print("Fail")</pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre>Pass</pre>
+            </details>
+
+            <h3>Code Explanation</h3>
+
+            <p>
+                The variable mark contains 75.
+                The condition checks whether mark is greater than
+                or equal to 50.
+                Since the condition is true, Pass is displayed.
+                Otherwise, Fail is displayed.
+            </p>
+
+            <h3>Quiz</h3>
+
+            <div class="quiz-question">
+                <p>1. Which keyword checks a condition?</p>
+
+                <input type="radio" name="python-q10" id="python-q10-a" class="correct-option">
+                <label for="python-q10-a">A. if</label>
+                <p class="answer correct">Correct!</p>
+
+                <input type="radio" name="python-q10" id="python-q10-b" class="wrong-option">
+                <label for="python-q10-b">B. print</label>
+                <p class="answer wrong">Wrong!</p>
+
+                
+            </div>
+
+            <div class="quiz-question">
+                <p>2. What is used when the condition is false?</p>
+
+                <input type="radio" name="python-q11" id="python-q11-a" class="wrong-option">
+                <label for="python-q11-a">A. for</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q11" id="python-q11-b" class="correct-option">
+                <label for="python-q11-b">B. else</label>
+                <p class="answer correct">Correct!</p>
+
+               
+            </div>
+
+            <div class="quiz-question">
+                <p>3. What is the output?</p>
+                <pre>if 10 > 5:
+    print("Yes")</pre>
+
+                <input type="radio" name="python-q12" id="python-q12-a" class="correct-option">
+                <label for="python-q12-a">A. Yes</label>
+                <p class="answer correct">Correct!</p>
+
+                <input type="radio" name="python-q12" id="python-q12-b" class="wrong-option">
+                <label for="python-q12-b">B. No</label>
+                <p class="answer wrong">Wrong!</p>
+
+                
+            </div>
+
+        </section>
+
+        <!-- LOOPS -->
+
+        <section class="topic" id="loops">
+
+            <h1>Python Loops</h1>
+
+            <p>
+                Loops are used to repeat a block of code multiple times.
+                Instead of writing the same statement again and again,
+                we can use a loop.
+                Python supports for loops and while loops.
+            </p>
+
+            <h3>🎬 Movie Example - Bigil</h3>
+
+            <p>
+                In Bigil, a team works together repeatedly to practise
+                and improve. Similarly, loops repeat instructions
+                until the required number of repetitions is completed
+                or a condition becomes false.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre class="syntax-box">for variable in range(number):
+    statement</pre>
+
+            <h3>Example Code</h3>
+
+            <pre class="syntax-box">for i in range(1, 4):
+    print(i)</pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre>1
+2
+3</pre>
+            </details>
+
+            <h3>Code Explanation</h3>
+
+            <p>
+                <p>
+                range(1, 4) produces the numbers 1, 2 and 3.
+                The loop runs three times.
+                Each time, the value of i changes.
+                print(i) displays the current value.
+            </p>
+
+            <h3>Quiz</h3>
+
+            <div class="quiz-question">
+                <p>1. Why do we use loops?</p>
+
+                <input type="radio" name="python-q13" id="python-q13-a" class="correct-option">
+                <label for="python-q13-a">A. To repeat code</label>
+                <p class="answer correct">Correct!</p>
+
+                <input type="radio" name="python-q13" id="python-q13-b" class="wrong-option">
+                <label for="python-q13-b">B. To delete code</label>
+                <p class="answer wrong">Wrong!</p>
+
+                
+            </div>
+<div class="quiz-question">
+                <p>2. Which is a Python loop?</p>
+
+                <input type="radio" name="python-q14" id="python-q14-a" class="wrong-option">
+                <label for="python-q14-a">A. repeat</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q14" id="python-q14-b" class="correct-option">
+                <label for="python-q14-b">B. for</label>
+                <p class="answer correct">Correct!</p>
+
+                
+            </div>
+
+            <div class="quiz-question">
+                <p>3. How many times does this loop run?</p>
+                <pre>for i in range(3):
+    print(i)</pre>
+
+                <input type="radio" name="python-q15" id="python-q15-a" class="wrong-option">
+                <label for="python-q15-a">A. 2</label>
+                <p class="answer wrong">Wrong!</p>
+<input type="radio" name="python-q15" id="python-q15-b" class="correct-option">
+                <label for="python-q15-b">B. 3</label>
+                <p class="answer correct">Correct!</p>
+
+                
+            </div>
+
+        </section>
+
+        <!-- FUNCTIONS -->
+
+        <section class="topic" id="functions">
+
+            <h1>Python Functions</h1>
+
+            <p>
+                A function is a reusable block of code that performs
+                a particular task. Functions help us organize code
+                and avoid repeating the same instructions.
+                Python uses the def keyword to create a function.
+            </p>
+
+            <h3>🎬 Movie Example - Sarkar</h3>
+<p>
+                In Sarkar, the main character takes action to solve
+                a problem. Similarly, a function is created for a task
+                and called whenever that task needs to be performed.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre class="syntax-box">def function_name():
+    statement
+
+function_name()</pre>
+
+            <h3>Example Code</h3>
+
+            <pre class="syntax-box">def greet():
+    print("Welcome to Python")
+
+greet()</pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre>Welcome to Python</pre>
+            </details>
+
+            <h3>Code Explanation</h3>
+<p>
+                def creates a function.
+                greet is the function name.
+                The print statement is inside the function.
+                greet() calls the function and displays the message.
+            </p>
+
+            <h3>Quiz</h3>
+
+            <div class="quiz-question">
+                <p>1. Which keyword creates a Python function?</p>
+
+                <input type="radio" name="python-q16" id="python-q16-a" class="correct-option">
+                <label for="python-q16-a">A. def</label>
+                <p class="answer correct">Correct!</p>
+
+                <input type="radio" name="python-q16" id="python-q16-b" class="wrong-option">
+                <label for="python-q16-b">B. if</label>
+                <p class="answer wrong">Wrong!</p>
+
+                
+            </div>
+<div class="quiz-question">
+                <p>2. What is used to call a function?</p>
+
+                <input type="radio" name="python-q17" id="python-q17-a" class="wrong-option">
+                <label for="python-q17-a">A. Only its name</label>
+                <p class="answer wrong">Wrong!</p>
+
+                <input type="radio" name="python-q17" id="python-q17-b" class="correct-option">
+                <label for="python-q17-b">B. Function name with parentheses</label>
+                <p class="answer correct">Correct!</p>
+
+               
+            </div>
+
+            <div class="quiz-question">
+                <p>3. What does this function display?</p>
+                <pre>def hello():
+    print("Hi")
+
+hello()</pre>
+
+                <input type="radio" name="python-q18" id="python-q18-a" class="correct-option">
+                <label for="python-q18-a">A. Hi</label>
+                <p class="answer correct">Correct!</p>
+<input type="radio" name="python-q18" id="python-q18-b" class="wrong-option">
+                <label for="python-q18-b">B. hello</label>
+                <p class="answer wrong">Wrong!</p>
+
+               
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
 
 </body>
-
 </html>
