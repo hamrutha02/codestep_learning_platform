@@ -10,14 +10,7 @@
         .topic { display: none; }
         .topic:target { display: block; }
 
-        body:has(.topic:target) #introduction {
-            display: none;
-        }
-
-        body:not(:has(.topic:target)) #introduction {
-            display: block;
-        }
-
+      
         .output-details {
             margin: 15px 0;
             padding: 12px;

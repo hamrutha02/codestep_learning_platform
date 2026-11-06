@@ -553,11 +553,11 @@ section {
     display: block;
 }
 
-/* Hide first topic when another topic is selected */
-
-.learning-page:has(.topic:target)
-.topic:first-of-type {
-    display: none;
+.topic{
+    display:none;
+}
+.topic:target{
+    display:block;
 }
 
 .topic:last-child {
