@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Learn C++ - CodeStep</title>
-
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .topic {
+        .topic { display: none; }
+        .topic:target { display: block; }
+
+        .learning-page:has(.topic:target) .topic:first-of-type {
             display: none;
         }
 
-        .topic:target {
+        .learning-page:not(:has(.topic:target)) .topic:first-of-type {
             display: block;
         }
 
@@ -57,31 +58,33 @@
             width: 100%;
             box-sizing: border-box;
             min-height: 45px;
-            margin: 10px 0;
-            padding: 10px 14px;
+            margin: 8px 0;
+            padding: 10px;
             cursor: pointer;
             border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 7px;
             background: white;
             text-align: left;
         }
 
         .quiz-question label:hover {
-            background: #eeeaff;
+            background: #f2f0ff;
+            border-color: #5b4bdb;
         }
 
         .quiz-question .answer {
             display: none;
-            font-weight: bold;
             margin: 10px 0;
+            font-weight: bold;
         }
 
         .quiz-question input.correct-option:checked + label {
             background: #e8f7e8;
             border-color: green;
+            color: green;
         }
 
-        .quiz-question input.correct-option:checked + label + .answer.correct {
+        .quiz-question input.correct-option:checked + label + .answer {
             display: block;
             color: green;
         }
@@ -89,23 +92,19 @@
         .quiz-question input.wrong-option:checked + label {
             background: #fff0f0;
             border-color: red;
+            color: red;
         }
 
-        .quiz-question input.wrong-option:checked + label + .answer.wrong {
+        .quiz-question input.wrong-option:checked + label + .answer {
             display: block;
             color: red;
         }
     </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-
 <header class="header">
-
     <div class="logo">CodeStep</div>
-
     <nav class="nav">
         <a href="index.html">Home</a>
         <a href="python.html">Python</a>
@@ -113,61 +112,30 @@
         <a href="cpp.html">C++</a>
         <a href="java.html">Java</a>
     </nav>
-
 </header>
 
-
 <div class="learning-page">
-
-    <!-- SIDEBAR -->
-
     <aside class="sidebar">
-
         <h3>C++ Topics</h3>
-
-        <a href="#intro">Introduction</a>
+        <a href="#introduction">Introduction</a>
         <a href="#variables">Variables</a>
         <a href="#datatypes">Data Types</a>
         <a href="#conditions">Conditional Statements</a>
         <a href="#loops">Loops</a>
         <a href="#classes">Classes and Objects</a>
-
     </aside>
-
-
-    <!-- MAIN CONTENT -->
 
     <main class="content">
 
-
-        <!-- TOPIC 1: INTRODUCTION -->
-
+        <!-- INTRODUCTION -->
         <section class="topic" id="intro">
-
             <h1>Introduction to C++</h1>
-
-            <p>
-                C++ is a general-purpose programming language.
-                It is an extension of the C language.
-                C++ supports procedural programming and
-                object-oriented programming.
-                It is used to develop applications,
-                games, and software systems.
-                The cout statement displays output
-                on the screen.
-            </p>
+            <p>C++ romba fast-ana programming language. C language-oda advanced version thaan ithu. Games, heavy softwares ellam create panna C++ romba use aaguthu.</p>
 
             <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Master, characters follow a plan
-                to complete their tasks.
-                Similarly, a C++ program follows
-                instructions written by the programmer.
-            </p>
+            <p>Master movie-la characters oru proper plan potu instructions follow pannuvanga la? Adhe madhiri dhaan C++ program-um step-by-step instructions-a follow pannum.</p>
 
             <h3>Syntax</h3>
-
             <pre><code>#include &lt;iostream&gt;
 using namespace std;
 
@@ -177,7 +145,6 @@ int main() {
 }</code></pre>
 
             <h3>Example Code</h3>
-
             <pre><code>#include &lt;iostream&gt;
 using namespace std;
 
@@ -192,106 +159,47 @@ int main() {
             </details>
 
             <h3>Explanation</h3>
+            <p><b>iostream</b> library input/output-ku use aaguthu. <b>cout</b> statement screen-la text-a display pannum.</p>
 
-            <p>
-                iostream is used for input and output.
-                main() is the starting point.
-                cout displays information.
-                return 0 indicates successful completion.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
+            <h3>Quiz</h3>
             <div class="quiz-question">
-
-                <p>Which statement displays output in C++?</p>
-
+                <p>1. Which statement displays output in C++?</p>
                 <input type="radio" name="cpp-q1" id="cpp-q1-a" class="correct-option">
                 <label for="cpp-q1-a">A. cout</label>
-                <p class="answer correct">Correct!</p>
+                <p class="answer">Correct! cout is used to display output.</p>
 
                 <input type="radio" name="cpp-q1" id="cpp-q1-b" class="wrong-option">
                 <label for="cpp-q1-b">B. cin</label>
-                <p class="answer wrong">Wrong!</p>
+                <p class="answer">Wrong! cin is used to take input.</p>
 
+                <input type="radio" name="cpp-q1" id="cpp-q1-c" class="wrong-option">
+                <label for="cpp-q1-c">C. print()</label>
+                <p class="answer">Wrong! That's in Python.</p>
+
+                <input type="radio" name="cpp-q1" id="cpp-q1-d" class="wrong-option">
+                <label for="cpp-q1-d">D. show()</label>
+                <p class="answer">Wrong!</p>
             </div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>Which function starts a C++ program?</p>
-
-                <input type="radio" name="cpp-q2" id="cpp-q2-a" class="correct-option">
-                <label for="cpp-q2-a">A. main()</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q2" id="cpp-q2-b" class="wrong-option">
-                <label for="cpp-q2-b">B. cout()</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>Which header is used for cout?</p>
-
-                <input type="radio" name="cpp-q3" id="cpp-q3-a" class="correct-option">
-                <label for="cpp-q3-a">A. iostream</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q3" id="cpp-q3-b" class="wrong-option">
-                <label for="cpp-q3-b">B. stdio.h</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
         </section>
 
-
-
-        <!-- TOPIC 2: VARIABLES -->
-
+        <!-- VARIABLES -->
         <section class="topic" id="variables">
-
             <h1>Variables</h1>
-
-            <p>
-                A variable is a named memory location
-                used to store a value.
-                The value can be used in calculations
-                and displayed on the screen.
-                Every variable in C++ has a data type.
-            </p>
+            <p>Variable na data-va store panni vekka use pandra oru container. Namba store pandra value-ku etha data type kudukkanum.</p>
 
             <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Sarkar, votes are counted and stored.
-                Similarly, variables store information
-                such as marks, age, and scores.
-            </p>
+            <p>Sarkar movie-la votes ellam count panni store pannuvanga la? Adhe madhiri dhaan variables numbers, scores ellam store pannum.</p>
 
             <h3>Syntax</h3>
-
             <pre><code>data_type variable_name = value;</code></pre>
 
             <h3>Example Code</h3>
-
             <pre><code>#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
-
     int marks = 95;
-
     cout &lt;&lt; "Marks = " &lt;&lt; marks;
-
     return 0;
 }</code></pre>
 
@@ -301,895 +209,212 @@ int main() {
             </details>
 
             <h3>Explanation</h3>
+            <p><b>int</b> whole numbers store pannum. <b>marks</b> variable name-la 95 value store aaguthu.</p>
 
-            <p>
-                int is the data type.
-                marks is the variable name.
-                95 is the stored value.
-                cout displays the variable value.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
+            <h3>Quiz</h3>
             <div class="quiz-question">
+                <p>1. What does a variable store in C++?</p>
+                <input type="radio" name="cpp-q2" id="cpp-q2-a" class="correct-option">
+                <label for="cpp-q2-a">A. A value</label>
+                <p class="answer">Correct! Variables store values in memory.</p>
 
-                <p>What does a variable store?</p>
+                <input type="radio" name="cpp-q2" id="cpp-q2-b" class="wrong-option">
+                <label for="cpp-q2-b">B. Only header files</label>
+                <p class="answer">Wrong!</p>
 
+                <input type="radio" name="cpp-q2" id="cpp-q2-c" class="wrong-option">
+                <label for="cpp-q2-c">C. Only loops</label>
+                <p class="answer">Wrong!</p>
+
+                <input type="radio" name="cpp-q2" id="cpp-q2-d" class="wrong-option">
+                <label for="cpp-q2-d">D. A compiler</label>
+                <p class="answer">Wrong!</p>
+            </div>
+        </section>
+
+        <!-- DATA TYPES -->
+        <section class="topic" id="datatypes">
+            <h1>Data Types</h1>
+            <p>Data types ovvoru variable-layum enna madhiri information store aaguthu nu sollum (integer, decimal, text).</p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+            <p>Bigil movie-la ovvoru player-kum oru role irukum la? Adhe madhiri ovvoru data type-kum oru purpose iruku.</p>
+
+            <h3>Example Code</h3>
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    int count = 3;
+    float price = 12.5;
+    char grade = 'A';
+    string name = "Vijay";
+
+    cout &lt;&lt; count &lt;&lt; endl;
+    cout &lt;&lt; price &lt;&lt; endl;
+    cout &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; name;
+    return 0;
+}</code></pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre><code>3
+12.5
+A
+Vijay</code></pre>
+            </details>
+
+            <h3>Explanation</h3>
+            <p><b>int</b> numbers-kum, <b>float</b> decimals-kum, <b>char</b> single character-kum, <b>string</b> text-kum use aaguthu. <b>endl</b> next line-ku pogum.</p>
+
+            <h3>Quiz</h3>
+            <div class="quiz-question">
+                <p>1. Which data type stores text in C++?</p>
+                <input type="radio" name="cpp-q3" id="cpp-q3-a" class="correct-option">
+                <label for="cpp-q3-a">A. string</label>
+                <p class="answer">Correct! string stores text values.</p>
+
+                <input type="radio" name="cpp-q3" id="cpp-q3-b" class="wrong-option">
+                <label for="cpp-q3-b">B. int</label>
+                <p class="answer">Wrong! int is for whole numbers.</p>
+
+                <input type="radio" name="cpp-q3" id="cpp-q3-c" class="wrong-option">
+                <label for="cpp-q3-c">C. char</label>
+                <p class="answer">Wrong! char stores only one character.</p>
+
+                <input type="radio" name="cpp-q3" id="cpp-q3-d" class="wrong-option">
+                <label for="cpp-q3-d">D. float</label>
+                <p class="answer">Wrong! float is for decimals.</p>
+            </div>
+        </section>
+
+        <!-- CONDITIONAL STATEMENTS -->
+        <section class="topic" id="conditions">
+            <h1>Conditional Statements</h1>
+            <p>Program-la decision edukka conditional statements use pannuvom. Condition true-na oru block run aagum, illena `else` block run aagum.</p>
+
+            <h3>🎬 Thalapathy Movie Example</h3>
+            <p>Theri movie-la situation-ku etha madhiri decisions edupanga la? Adhe madhiri dhaan if-else statements work aagum.</p>
+
+            <h3>Example Code</h3>
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int mark = 75;
+
+    if (mark >= 50) {
+        cout &lt;&lt; "Pass";
+    } else {
+        cout &lt;&lt; "Fail";
+    }
+    return 0;
+}</code></pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre><code>Pass</code></pre>
+            </details>
+
+            <h3>Explanation</h3>
+            <p>Mark 50-ku mela irukura nala condition true aagi "Pass" output varuthu.</p>
+
+            <h3>Quiz</h3>
+            <div class="quiz-question">
+                <p>1. Which keyword checks a condition in C++?</p>
                 <input type="radio" name="cpp-q4" id="cpp-q4-a" class="correct-option">
-                <label for="cpp-q4-a">A. A value</label>
-                <p class="answer correct">Correct!</p>
+                <label for="cpp-q4-a">A. if</label>
+                <p class="answer">Correct! 'if' checks whether a condition is true.</p>
 
                 <input type="radio" name="cpp-q4" id="cpp-q4-b" class="wrong-option">
-                <label for="cpp-q4-b">B. Only a function</label>
-                <p class="answer wrong">Wrong!</p>
+                <label for="cpp-q4-b">B. cout</label>
+                <p class="answer">Wrong! cout displays output.</p>
 
+                <input type="radio" name="cpp-q4" id="cpp-q4-c" class="wrong-option">
+                <label for="cpp-q4-c">C. for</label>
+                <p class="answer">Wrong! for is a loop.</p>
+
+                <input type="radio" name="cpp-q4" id="cpp-q4-d" class="wrong-option">
+                <label for="cpp-q4-d">D. class</label>
+                <p class="answer">Wrong!</p>
             </div>
+        </section>
 
+        <!-- LOOPS -->
+        <section class="topic" id="loops">
+            <h1>Loops</h1>
+            <p>Ore task-a multiple times repeat panna loops use pannalam.</p>
 
-            <h3>Quiz 2</h3>
+            <h3>🎬 Thalapathy Movie Example</h3>
+            <p>Leo movie-la repeated practice panni strong aagurathu madhiri, loops condition false aagura varaikkum repeat aagum.</p>
 
+            <h3>Example Code</h3>
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 3; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    return 0;
+}</code></pre>
+
+            <details class="output-details">
+                <summary>▶ Show Output</summary>
+                <pre><code>1 2 3</code></pre>
+            </details>
+
+            <h3>Explanation</h3>
+            <p>Loop i = 1-la start aagi 3 varaikkum run aagi numbers-a print pannum.</p>
+
+            <h3>Quiz</h3>
             <div class="quiz-question">
-
-                <p>Which type stores whole numbers?</p>
-
+                <p>1. What does a loop do?</p>
                 <input type="radio" name="cpp-q5" id="cpp-q5-a" class="correct-option">
-                <label for="cpp-q5-a">A. int</label>
-                <p class="answer correct">Correct!</p>
+                <label for="cpp-q5-a">A. Repeats a block of code</label>
+                <p class="answer">Correct! Loops repeat code multiple times.</p>
 
                 <input type="radio" name="cpp-q5" id="cpp-q5-b" class="wrong-option">
-                <label for="cpp-q5-b">B. char</label>
-                <p class="answer wrong">Wrong!</p>
+                <label for="cpp-q5-b">B. Deletes code</label>
+                <p class="answer">Wrong!</p>
 
+                <input type="radio" name="cpp-q5" id="cpp-q5-c" class="wrong-option">
+                <label for="cpp-q5-c">C. Stops the program</label>
+                <p class="answer">Wrong!</p>
+
+                <input type="radio" name="cpp-q5" id="cpp-q5-d" class="wrong-option">
+                <label for="cpp-q5-d">D. Declares variables</label>
+                <p class="answer">Wrong!</p>
             </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>Choose a valid declaration.</p>
-
-                <input type="radio" name="cpp-q6" id="cpp-q6-a" class="correct-option">
-                <label for="cpp-q6-a">A. int age = 18;</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q6" id="cpp-q6-b" class="wrong-option">
-                <label for="cpp-q6-b">B. age int;</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
         </section>
 
-
-
-        <!-- TOPIC 3: DATA TYPES -->
-
-        <section class="topic" id="datatypes">
-
-            <h1>Data Types</h1>
-
-            <p>
-                Data types specify the type of value
-                stored in a variable.
-                int stores whole numbers.
-                float stores decimal numbers.
-                char stores a single character.
-                string stores text.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Bigil, players have different roles.
-                Similarly, data types have different
-                purposes depending on the values
-                stored in a program.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>int count;
-float price;
-char grade;
-string name;</code></pre>
-
-            <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
-
-int main() {
-
-    int count = 3;
-    float price = 12.5;
-    char grade = 'A';
-    string name = "Vijay";
-
-    cout &lt;&lt; count &lt;&lt; endl;
-    cout &lt;&lt; price &lt;&lt; endl;
-    cout &lt;&lt; grade &lt;&lt; endl;
-    cout &lt;&lt; name;
-
-    return 0;
-}</code></pre>
-
-            <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>3
-12.5
-A
-Vijay</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                int stores whole numbers.
-                float stores decimal numbers.
-                char stores one character.
-                string stores text.
-                endl moves output to the next line.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
-            <div class="quiz-question">
-
-                <p>Which data type stores a character?</p>
-
-                <input type="radio" name="cpp-q7" id="cpp-q7-a" class="correct-option">
-                <label for="cpp-q7-a">A. char</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q7" id="cpp-q7-b" class="wrong-option">
-                <label for="cpp-q7-b">B. float</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>Which type stores text?</p>
-
-                <input type="radio" name="cpp-q8" id="cpp-q8-a" class="correct-option">
-                <label for="cpp-q8-a">A. string</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q8" id="cpp-q8-b" class="wrong-option">
-                <label for="cpp-q8-b">B. int</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>Which type stores decimal values?</p>
-
-                <input type="radio" name="cpp-q9" id="cpp-q9-a" class="correct-option">
-                <label for="cpp-q9-a">A. float</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q9" id="cpp-q9-b" class="wrong-option">
-                <label for="cpp-q9-b">B. char</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TOPIC 4: CONDITIONAL STATEMENTS -->
-
-        <section class="topic" id="conditions">
-
-            <h1>Conditional Statements</h1>
-
-            <p>
-                Conditional statements help a program
-                make decisions.
-                The if statement checks a condition.
-                If the condition is true,
-                the if block executes.
-                Otherwise, the else block executes.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Theri, decisions depend on situations.
-                Similarly, if-else statements choose
-                which block of code should execute.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>if (condition) {
-    // true block
-} else {
-    // false block
-}</code></pre>
-
-            <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-
-    int mark = 75;
-
-    if (mark >= 50) {
-
-        cout &lt;&lt; "Pass";
-
-    } else {
-
-        cout &lt;&lt; "Fail";
-
-    }
-
-    return 0;
-}</code></pre>
-
-            <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>Pass</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                mark is 75.
-                The condition mark >= 50 is true.
-                Therefore, the program displays Pass.
-                If the condition is false,
-                the else block displays Fail.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
-            <div class="quiz-question">
-
-                <p>Which keyword checks a condition?</p>
-
-                <input type="radio" name="cpp-q10" id="cpp-q10-a" class="correct-option">
-                <label for="cpp-q10-a">A. if</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q10" id="cpp-q10-b" class="wrong-option">
-                <label for="cpp-q10-b">B. cout</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>When does else execute?</p>
-
-                <input type="radio" name="cpp-q11" id="cpp-q11-a" class="correct-option">
-                <label for="cpp-q11-a">A. When if is false</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q11" id="cpp-q11-b" class="wrong-option">
-                <label for="cpp-q11-b">B. When if is true</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>What is the output when mark = 75?</p>
-
-                <input type="radio" name="cpp-q12" id="cpp-q12-a" class="correct-option">
-                <label for="cpp-q12-a">A. Pass</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q12" id="cpp-q12-b" class="wrong-option">
-                <label for="cpp-q12-b">B. Fail</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TOPIC 5: LOOPS -->
-
-        <section class="topic" id="loops">
-
-            <h1>Loops</h1>
-
-            <p>
-                Loops repeat a block of code.
-                The for loop is useful when we know
-                how many times a task should repeat.
-                A loop contains initialization,
-                condition, and update.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Leo, repeated practice helps
-                a team improve.
-                Similarly, loops repeat instructions
-                until the condition becomes false.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>for (initialization; condition; update) {
-    // statements
-}</code></pre>
-
-            <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-
-    for (int i = 1; i <= 3; i++) {
-
-        cout &lt;&lt; i &lt;&lt; " ";
-
-    }
-
-    return 0;
-}</code></pre>
-
-            <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>1 2 3</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                The loop starts with i = 1.
-                It runs while i <= 3.
-                i++ increases the value by one.
-                The output is 1 2 3.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
-            <div class="quiz-question">
-
-                <p>What does a loop do?</p>
-
-                <input type="radio" name="cpp-q13" id="cpp-q13-a" class="correct-option">
-                <label for="cpp-q13-a">A. Repeats code</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q13" id="cpp-q13-b" class="wrong-option">
-                <label for="cpp-q13-b">B. Deletes code</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>Which part checks whether to continue?</p>
-
-                <input type="radio" name="cpp-q14" id="cpp-q14-a" class="correct-option">
-                <label for="cpp-q14-a">A. Condition</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q14" id="cpp-q14-b" class="wrong-option">
-                <label for="cpp-q14-b">B. Update</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>How many times does the loop run from 1 to 3?</p>
-
-                <input type="radio" name="cpp-q15" id="cpp-q15-a" class="correct-option">
-                <label for="cpp-q15-a">A. 3 times</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q15" id="cpp-q15-b" class="wrong-option">
-                <label for="cpp-q15-b">B. 1 time</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TOPIC 6: CLASSES AND OBJECTS -->
-
+        <!-- CLASSES AND OBJECTS -->
         <section class="topic" id="classes">
-
             <h1>Classes and Objects</h1>
-
-            <p>
-                C++ supports object-oriented programming.
-                A class is a blueprint used to create objects.
-                A class can contain variables and functions.
-                An object is an instance of a class.
-                Classes help organize related information
-                and behavior together.
-            </p>
+            <p>Class na oru blueprint madhiri. Athula variables and functions-a group panni vechukkalam. Antha class-la irundhu create panrathu dhaan Object.</p>
 
             <h3>🎬 Thalapathy Movie Example</h3>
-                <p>
-                In Bigil, players have different roles.
-                Similarly, data types have different
-                purposes depending on the values
-                stored in a program.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>int count;
-float price;
-char grade;
-string name;</code></pre>
+            <p>Bigil movie-la coach podura game plan oru Class (blueprint) madhiri; athai ground-la play pandra ovvoru player-um Objects madhiri.</p>
 
             <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
-
-int main() {
-
-    int count = 3;
-    float price = 12.5;
-    char grade = 'A';
-    string name = "Vijay";
-
-    cout &lt;&lt; count &lt;&lt; endl;
-    cout &lt;&lt; price &lt;&lt; endl;
-    cout &lt;&lt; grade &lt;&lt; endl;
-    cout &lt;&lt; name;
-
-    return 0;
-}</code></pre>
-     <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>3
-12.5
-A
-Vijay</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                int stores whole numbers.
-                float stores decimal numbers.
-                char stores one character.
-                string stores text.
-                endl moves output to the next line.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
-            <div class="quiz-question">
-
-                <p>Which data type stores a character?</p>
-
-                <input type="radio" name="cpp-q7" id="cpp-q7-a" class="correct-option">
-                <label for="cpp-q7-a">A. char</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q7" id="cpp-q7-b" class="wrong-option">
-                <label for="cpp-q7-b">B. float</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>Which type stores text?</p>
-
-                <input type="radio" name="cpp-q8" id="cpp-q8-a" class="correct-option">
-                <label for="cpp-q8-a">A. string</label>
-                <p class="answer correct">Correct!</p>
- <input type="radio" name="cpp-q8" id="cpp-q8-b" class="wrong-option">
-                <label for="cpp-q8-b">B. int</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>Which type stores decimal values?</p>
-
-                <input type="radio" name="cpp-q9" id="cpp-q9-a" class="correct-option">
-                <label for="cpp-q9-a">A. float</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q9" id="cpp-q9-b" class="wrong-option">
-                <label for="cpp-q9-b">B. char</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TOPIC 4: CONDITIONAL STATEMENTS -->
-
-        <section class="topic" id="conditions">
-
-            <h1>Conditional Statements</h1>
- <p>
-                Conditional statements help a program
-                make decisions.
-                The if statement checks a condition.
-                If the condition is true,
-                the if block executes.
-                Otherwise, the else block executes.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Theri, decisions depend on situations.
-                Similarly, if-else statements choose
-                which block of code should execute.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>if (condition) {
-    // true block
-} else {
-    // false block
-}</code></pre>
-
-            <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-
-    int mark = 75;
-
-    if (mark >= 50) {
-
-        cout &lt;&lt; "Pass";
-
-    } else {
-
-        cout &lt;&lt; "Fail";
-
-    }
-
-    return 0;
-}</code></pre>
-
-            <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>Pass</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                mark is 75.
-                The condition mark >= 50 is true.
-                Therefore, the program displays Pass.
-                If the condition is false,
-                the else block displays Fail.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
-            <div class="quiz-question">
-
-                <p>Which keyword checks a condition?</p>
-
-                <input type="radio" name="cpp-q10" id="cpp-q10-a" class="correct-option">
-                <label for="cpp-q10-a">A. if</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q10" id="cpp-q10-b" class="wrong-option">
-                <label for="cpp-q10-b">B. cout</label>
-                <p class="answer wrong">Wrong!</p>
-</div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>When does else execute?</p>
-
-                <input type="radio" name="cpp-q11" id="cpp-q11-a" class="correct-option">
-                <label for="cpp-q11-a">A. When if is false</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q11" id="cpp-q11-b" class="wrong-option">
-                <label for="cpp-q11-b">B. When if is true</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>What is the output when mark = 75?</p>
-
-                <input type="radio" name="cpp-q12" id="cpp-q12-a" class="correct-option">
-                <label for="cpp-q12-a">A. Pass</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q12" id="cpp-q12-b" class="wrong-option">
-                <label for="cpp-q12-b">B. Fail</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TOPIC 5: LOOPS -->
-         <section class="topic" id="loops">
-
-            <h1>Loops</h1>
-
-            <p>
-                Loops repeat a block of code.
-                The for loop is useful when we know
-                how many times a task should repeat.
-                A loop contains initialization,
-                condition, and update.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Leo, repeated practice helps
-                a team improve.
-                Similarly, loops repeat instructions
-                until the condition becomes false.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>for (initialization; condition; update) {
-    // statements
-}</code></pre>
-
-            <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-
-    for (int i = 1; i <= 3; i++) {
-
-        cout &lt;&lt; i &lt;&lt; " ";
-
-    }
-
-    return 0;
-}</code></pre>
-
-            <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>1 2 3</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                The loop starts with i = 1.
-                It runs while i <= 3.
-                i++ increases the value by one.
-<section class="topic" id="loops">
-
-            <h1>Loops</h1>
-
-            <p>
-                Loops repeat a block of code.
-                The for loop is useful when we know
-                how many times a task should repeat.
-                A loop contains initialization,
-                condition, and update.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Leo, repeated practice helps
-                a team improve.
-                Similarly, loops repeat instructions
-                until the condition becomes false.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>for (initialization; condition; update) {
-    // statements
-}</code></pre>
-
-            <h3>Example Code</h3>
-
-            <pre><code>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-
-    for (int i = 1; i <= 3; i++) {
-cout &lt;&lt; i &lt;&lt; " ";
-
-    }
-
-    return 0;
-}</code></pre>
-
-            <details class="output-details">
-                <summary>▶ Show Output</summary>
-                <pre><code>1 2 3</code></pre>
-            </details>
-
-            <h3>Explanation</h3>
-
-            <p>
-                The loop starts with i = 1.
-                It runs while i <= 3.
-                i++ increases the value by one.
-                The output is 1 2 3.
-            </p>
-
- <h3>Quiz 1</h3>
-
-            <div class="quiz-question">
-
-                <p>What does a loop do?</p>
-
-                <input type="radio" name="cpp-q13" id="cpp-q13-a" class="correct-option">
-                <label for="cpp-q13-a">A. Repeats code</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q13" id="cpp-q13-b" class="wrong-option">
-                <label for="cpp-q13-b">B. Deletes code</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>Which part checks whether to continue?</p>
-
-                <input type="radio" name="cpp-q14" id="cpp-q14-a" class="correct-option">
-                <label for="cpp-q14-a">A. Condition</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q14" id="cpp-q14-b" class="wrong-option">
-                <label for="cpp-q14-b">B. Update</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-<h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>How many times does the loop run from 1 to 3?</p>
-
-                <input type="radio" name="cpp-q15" id="cpp-q15-a" class="correct-option">
-                <label for="cpp-q15-a">A. 3 times</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q15" id="cpp-q15-b" class="wrong-option">
-                <label for="cpp-q15-b">B. 1 time</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TOPIC 6: CLASSES AND OBJECTS -->
-
-        <section class="topic" id="classes">
-
-            <h1>Classes and Objects</h1>
-
-            <p>
-                C++ supports object-oriented programming.
-                A class is a blueprint used to create objects.
-                A class can contain variables and functions.
-                An object is an instance of a class.
-                Classes help organize related information
-                and behavior together.
-            </p>
-
-            <h3>🎬 Thalapathy Movie Example</h3>
-
-            <p>
-                In Bigil, each player has information
-                and responsibilities.
-                Similarly, a class groups related
-                data and functions together.
-            </p>
-
-            <h3>Syntax</h3>
-
-            <pre><code>class ClassName {
-public:
-    // members
-};</code></pre>
-
-            <h3>Example Code</h3>
-
             <pre><code>#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
 
 class Student {
-
 public:
-
     string name;
-
     void display() {
-
         cout &lt;&lt; name;
-
     }
-
 };
 
 int main() {
- Student s;
-
+    Student s;
     s.name = "Vijay";
-
     s.display();
-
     return 0;
 }</code></pre>
 
@@ -1199,69 +424,30 @@ int main() {
             </details>
 
             <h3>Explanation</h3>
+            <p><b>Student</b> oru class. <b>s</b> antha class-oda object. Object moolama `display()` function-a call pannrom.</p>
 
-            <p>
-                Student is the class name.
-                name is a data member.
-                display() is a member function.
-                s is an object of Student.
-                The object calls display()
-                to print the student's name.
-            </p>
-
-
-            <h3>Quiz 1</h3>
-
+            <h3>Quiz</h3>
             <div class="quiz-question">
+                <p>1. What is a class in C++?</p>
+                <input type="radio" name="cpp-q6" id="cpp-q6-a" class="correct-option">
+                <label for="cpp-q6-a">A. A blueprint for creating objects</label>
+                <p class="answer">Correct! A class acts as a blueprint.</p>
 
-                <p>What is a class?</p>
+                <input type="radio" name="cpp-q6" id="cpp-q6-b" class="wrong-option">
+                <label for="cpp-q6-b">B. A type of loop</label>
+                <p class="answer">Wrong!</p>
 
-                <input type="radio" name="cpp-q16" id="cpp-q16-a" class="correct-option">
-                <label for="cpp-q16-a">A. A blueprint</label>
-                <p class="answer correct">Correct!</p>
+                <input type="radio" name="cpp-q6" id="cpp-q6-c" class="wrong-option">
+                <label for="cpp-q6-c">C. A conditional keyword</label>
+                <p class="answer">Wrong!</p>
 
-                <input type="radio" name="cpp-q16" id="cpp-q16-b" class="wrong-option">
-                <label for="cpp-q16-b">B. A loop</label>
-                <p class="answer wrong">Wrong!</p>
-
+                <input type="radio" name="cpp-q6" id="cpp-q6-d" class="wrong-option">
+                <label for="cpp-q6-d">D. A header file</label>
+                <p class="answer">Wrong!</p>
             </div>
-
-<h3>Quiz 2</h3>
-
-            <div class="quiz-question">
-
-                <p>What is an object?</p>
-
-                <input type="radio" name="cpp-q17" id="cpp-q17-a" class="correct-option">
-                <label for="cpp-q17-a">A. Instance of a class</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q17" id="cpp-q17-b" class="wrong-option">
-                <label for="cpp-q17-b">B. A data type only</label>
-                <p class="answer wrong">Wrong!</p>
-
-            </div>
-
-
-            <h3>Quiz 3</h3>
-
-            <div class="quiz-question">
-
-                <p>Which keyword creates a class?</p>
-
-                <input type="radio" name="cpp-q18" id="cpp-q18-a" class="correct-option">
-                <label for="cpp-q18-a">A. class</label>
-                <p class="answer correct">Correct!</p>
-
-                <input type="radio" name="cpp-q18" id="cpp-q18-b" class="wrong-option">
-                <label for="cpp-q18-b">B. object</label>
-                <p class="answer wrong">Wrong!</p>
-</div>
-
         </section>
 
     </main>
-
 </div>
 
 </body>
